@@ -1,0 +1,32 @@
+package com.staffing_poratl.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "job_requirements")
+@Data
+public class JobRequirement {
+
+    @Id
+    @Column(name = "job_code")
+    private String jobCode;
+
+    private String recruiterName;
+    private String companyName;
+    private String roleName;
+    private String skills;
+    private String mandatorySkills;
+    private Double salaryMin;
+    private Double salaryMax;
+    private Double experienceMin;
+    private Double experienceMax;
+    private String location;
+    private String spocName;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+
+    private LocalDateTime createdAt;
+    privat

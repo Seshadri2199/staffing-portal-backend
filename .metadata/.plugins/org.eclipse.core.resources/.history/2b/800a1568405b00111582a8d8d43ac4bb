@@ -1,0 +1,48 @@
+package com.staffing_poratl.service;
+
+import com.staffing_poratl.model.Candidate;
+import com.staffing_poratl.repository.CandidateRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class CandidateService {
+
+    @Autowired
+    private CandidateRepository candidateRepository;
+
+    public List<Candidate> getAllCandidates() {
+        return candidateRepository.findAll();
+    }
+
+    public Candidate saveCandidate(Candidate candidate) {
+        return candidateRepository.save(candidate);
+    }
+
+    public Candidate updateCandidate(Long id, Candidate updated) {
+        Candidate existing = candidateRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Candidate not found"));
+        existing.setCandidateName(updated.getCandidateName());
+        existing.setPanNumber(updated.getPanNumber());
+        existing.setCurrentRole(updated.getCurrentRole());
+        existing.setCompanyName(updated.getCompanyName());
+        existing.setDomain(updated.getDomain());
+        existing.setExperienceYears(updated.getExperienceYears());
+        existing.setCurrentSalary(updated.getCurrentSalary());
+        existing.setExpectedSalary(updated.getExpectedSalary());
+        existing.setCurrentLocation(updated.getCurrentLocation());
+        existing.setExpectedLocation(updated.getExpectedLocation());
+        existing.setFeedback(updated.getFeedback());
+        return candidateRepository.save(existing);
+    }
+
+    public void deleteCandidate(Long id) {
+        candidateRepository.deleteById(id);
+    }
+
+    public List<Candidate> searchCandidates(String keyword) {
+        return candidateRepository
+            .findByCandidateNameContainingIgnoreCase(keyword);
+    }
+}

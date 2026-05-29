@@ -1,0 +1,5 @@
+package com.staffing_poratl.model;
+
+public class Candidate {
+
+}
