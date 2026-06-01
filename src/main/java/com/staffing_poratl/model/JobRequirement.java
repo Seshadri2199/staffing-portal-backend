@@ -1,0 +1,54 @@
+package com.staffing_poratl.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "job_requirements")
+@Data
+public class JobRequirement {
+
+    @Id
+    @Column(name = "job_code")
+    private String jobCode;
+
+    private String companyName;
+    private String roleName;
+    private String skills;
+    private String mandatorySkills;
+    private String salary;
+    private String experience;
+    private String relevantExperience;
+    private String location;
+    private String spocName;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    public enum Status { ACTIVE, ON_HOLD, CLOSED }
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
+    @Transient
+    public String getFreshness() {
+        if (createdAt == null) return "green";
+        long hours = java.time.Duration
+            .between(createdAt, LocalDateTime.now()).toHours();
+        if (hours < 24)  return "green";
+        if (hours <= 76) return "orange";
+        return "red";
+    }
+}
