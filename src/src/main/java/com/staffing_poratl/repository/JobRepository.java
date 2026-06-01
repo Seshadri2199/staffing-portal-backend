@@ -1,0 +1,18 @@
+package com.staffing_poratl.repository;
+
+import com.staffing_poratl.model.JobRequirement;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Repository
+public interface JobRepository
+    extends JpaRepository<JobRequirement, String> {
+
+    List<JobRequirement> findByCreatedAtBetween(
+        LocalDateTime start, LocalDateTime end);
+
+    List<JobRequirement> findByCompanyNameContainingIgnoreCase(
+        String keyword);
+}

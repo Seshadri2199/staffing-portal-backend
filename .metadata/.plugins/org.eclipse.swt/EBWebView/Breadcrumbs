@@ -39,3 +39,25 @@
 0:00:02 Tab2 StartNav6 #typed
 0:00:02 Tab2 FinishNav6
 0:00:02 Tab2 PageLoad
+1:42:39 Tab2 StartNav7 #typed
+1:42:39 Tab2 FinishNav7
+1:42:39 Tab2 PageLoad
+1:42:41 Microsoft.NewBrowser_Popup
+1:42:41 Microsoft.BrowserList.AddBrowser
+1:42:41 Browser3 Insert active Tab3 at 0
+1:42:41 Tab3 StartNav8 #auto_toplevel
+1:42:41 Tab3 StartNav9 #typed
+1:42:41 Tab3 FinishNav8
+1:42:41 Tab3 PageLoad
+1:42:41 Tab3 FinishNav9
+1:42:41 Tab3 PageLoad
+1:42:41 Tab2 StartNav10 #typed
+1:42:41 Tab2 FinishNav10
+1:42:41 Tab2 PageLoad
+1:42:41 Tab3 StartNav11 #typed
+1:42:41 Tab3 FinishNav11
+1:42:41 Tab3 PageLoad
+1:42:44 Tab2 StartNav12 #typed
+1:42:44 Tab2 FinishNav12
+1:42:44 Tab2 PageLoad
+1:43:03 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
